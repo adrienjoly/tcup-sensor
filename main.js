@@ -22,12 +22,31 @@ var BluetoothPeripheral = require('./BluetoothPeripheral');
 var pushToPhone = require('./Push.js');
 
 var tempSensor = new TemperatureSensor().start(500);
-var socketServer = new SocketServer().start(tempSensor);
+var socketServer = new SocketServer().start();
 var display = new LcdDisplay();
 
 var CONSUMPTION_TEMPERATURE = 0; // 30
 
 console.log("Ideal tea temperature:", CONSUMPTION_TEMPERATURE);
+
+// Attach a 'connection' event handler to the server
+socketServer.on('connection', function (socket) {
+  console.log('Socket.io user connected');
+  socket.emit('connected', 'Welcome');
+
+  var sendToSocket = socket.emit.bind(socket, 'celsius');
+  tempSensor.on('temp', sendToSocket);
+
+  socket.on('setMaxCelsius', function(max){
+    console.log('maxCelsius <-', max);
+    CONSUMPTION_TEMPERATURE = parseInt(max);
+  })
+
+  socket.on('disconnect', function () {
+      console.log('Socket.io user disconnected');
+      tempSensor.removeListener("temp", sendToSocket);
+  });
+});
 
 var iter = 0;
 function onTemperature(celsius){

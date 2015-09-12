@@ -36,5 +36,6 @@ var socket = connect(function(err, message){
             'Ok'                  // buttonName
         );
         socket.on('celsius', onCelsius);
+        socket.emit('setMaxCelsius', 25);
     }
 });
