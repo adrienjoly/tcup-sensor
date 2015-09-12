@@ -7,6 +7,10 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+      "async": "latest",
+      "noble": "latest",
+      "bleno": "latest",
+      "bluetooth-hci-socket": "latest",
       "socket.io":"latest"
   }
 }

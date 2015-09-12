@@ -1,20 +1,52 @@
-Local Temperature Node.js IoT App
-============================
-The Local Temperature Node.js sample application distributed within Intel® XDK IoT Edition under the IoT with Node.js Projects project creation option showcases how to read analog data from a Grover Starter Kit Plus – IoT Intel® Edition Temperature Sensor, start a web server and communicate wirelessly using WebSockets.
+TCup Sensor
+===========
 
-Intel(R) XDK IoT Edition
--------------------------------------------
-This template is part of the Intel(R) XDK IoT Edition. 
-Download the Intel(R) XDK IoT Edition at https://software.intel.com/en-us/html5/xdk-iot. To see the technical details of the sample, 
-please visit the sample article page at https://software.intel.com/en-us/html5/articles/iot-local-temperature-nodejs-and-html5-samples.
+TemperatureSensor reads analog data from a Grover Starter Kit Plus – IoT Intel® Edition Temperature Sensor.
+It uses bleno on Intel IoT platforms to advertise it's presence, to read and write data via it's service and corresponding characteristic for Bluetooth Low Energy (BLE) communication.
 
+In order to leverage this project successfully, you will need to enable bluetooth and disable the bluetooth daemon on Intel(R) Edison. 
 
-Important App Files
----------------------------
-* main.js
-* package.json
-* icon.png
-* README.md
+In order to leverage this project successfully, you will need to use a compatible BLE product such as the [Grove - BLE](http://www.seeedstudio.com/depot/Grove-BLE-p-1929.html)
+
+First time - Enabling BLE
+-------------------------
+
+Within a SSH or Serial Terminal connection, type the following commands,
+```
+rfkill unblock bluetooth 
+hciconfig hci0 up
+
+vi /etc/opkg/base-feeds.conf (insert only following lines) 
+src/gz all http://repo.opkg.net/edison/repo/all 
+src/gz edison http://repo.opkg.net/edison/repo/edison 
+src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
+```
+*For more information on the vi editor, visit* http://www.cs.colostate.edu/helpdocs/vi.html
+
+```
+opkg update 
+opkg install bluez5-dev
+```
+
+**Note:** If bluez fails to install this version, still proceed with remainding steps.
+
+Prerequisite for Bleno - node package to work successfully
+----------------------------------------------------------
+
+**Note:** The following steps will need to be executed every time the board is restarted.
+Within a SSH or Serial Terminal connection, type the following commands,
+```
+rfkill unblock bluetooth 
+killall bluetoothd (or, more permanently) systemctl disable bluetooth 
+hciconfig hci0 up 
+```
+
+You should now be able to use BLE in your project.
+
+Contributors
+------------
+
+Parts of this source code was taken from the [Intel(R) XDK IoT Edition](https://software.intel.com/en-us/html5/xdk-iot) [code samples](https://software.intel.com/en-us/html5/articles/iot-local-temperature-nodejs-and-html5-samples).
 
 License Information Follows
 ---------------------------
@@ -44,24 +76,3 @@ GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
 HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-mraa
---------------------------------------------
-* Included on the IoTDevkit Linux Image 
-
-* source:  https://github.com/intel-iot-devkit/mraa
-* license:  https://github.com/intel-iot-devkit/mraa/blob/9d488c8e869e59e1dff2c68218a8f38e9b959cd7/cmake/modules/LICENSE_1_0.txt
-
-express
---------------------------------------------
-http://expressjs.com/
-
-* source: https://github.com/strongloop/express
-* license: https://github.com/strongloop/express/blob/master/LICENSE
-
-socket.io
---------------------------------------------
-http://socket.io/
-
-* source: https://github.com/Automattic/socket.io
-* license: https://github.com/Automattic/socket.io/blob/master/LICENSE
