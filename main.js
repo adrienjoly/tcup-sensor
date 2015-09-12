@@ -26,15 +26,32 @@ var display = new LcdDisplay();
 
 var BluetoothPeripheral = require('./BluetoothPeripheral');
 
-var iter = 0;
+var pushToPhone = require('./Push.js');
 
-tempSensor.on('temp', function(celcius){
+var CONSUMPTION_TEMPERATURE = 30;
+
+console.log("Ideal tea temperature:", CONSUMPTION_TEMPERATURE);
+
+var iter = 0;
+function onTemperature(celsius){
   if (!iter) {
-    console.log('Celsius Temperature:', celcius); 
+    console.log('Celsius Temperature:', celsius); 
   }
   iter = (iter + 1) % 5;
-  var normTemp = Math.min(255, Math.max(0, celcius - 20) * 3);
+  var normTemp = Math.min(255, Math.max(0, celsius - 20) * 3);
   display.setColor(parseInt(normTemp), parseInt(255 - normTemp), 0);
   display.setCursor(0, 0);
-  display.write('celsius=' + celcius + ' ');
-});
+  display.write('tea: ' + ('' + celsius).substr(0, 5) + ' °C ');
+
+  if (celsius <= CONSUMPTION_TEMPERATURE) {
+    tempSensor.removeListener('temp', onTemperature);
+    display.setColor(0, 0, 255);
+    display.setCursor(0, 0);
+    display.write('ready to drink!');
+    pushToPhone('your tea is ready to drink!');
+  }
+}
+
+setTimeout(function(){
+  tempSensor.on('temp', onTemperature);
+}, 1000);

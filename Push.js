@@ -1,4 +1,7 @@
 'use strict';
+
+// NOTE: cert.pem and key.pen must be stored in the project's directory
+// NOTE: the board must be able to contact to the apns server thru port 2195 => beware of firewalls!
  
 var apn = require ('apn');
 
@@ -42,4 +45,4 @@ function pushNotificationsToMany(message) {
     service.pushNotification(note, tokens);
 }
 
-pushNotificationToMany();
+module.exports = pushNotificationsToMany;
