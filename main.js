@@ -24,6 +24,8 @@ var socketServer = new SocketServer().start(tempSensor);
 var LcdDisplay = require('./LcdDisplay');
 var display = new LcdDisplay();
 
+var BluetoothPeripheral = require('./BluetoothPeripheral');
+
 tempSensor.on('temp', function(celcius){
   console.log('Celsius Temperature:', celcius); 
   var normTemp = Math.min(255, Math.max(0, celcius - 20) * 3);
