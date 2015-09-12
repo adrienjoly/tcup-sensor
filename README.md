@@ -1,12 +1,16 @@
 TCup Sensor
 ===========
 
+TCup helps you improve the quality of your tea consumption, by adapting the infusion process accordingly to the type of tea, and by notifying you when your cup of tea has arrived to your favorite drinking temperature.
+
 TemperatureSensor reads analog data from a Grover Starter Kit Plus – IoT Intel® Edition Temperature Sensor.
 It uses bleno on Intel IoT platforms to advertise it's presence, to read and write data via it's service and corresponding characteristic for Bluetooth Low Energy (BLE) communication.
 
-In order to leverage this project successfully, you will need to enable bluetooth and disable the bluetooth daemon on Intel(R) Edison. 
+In order to leverage this project successfully, you will need:
 
-In order to leverage this project successfully, you will need to use a compatible BLE product such as the [Grove - BLE](http://www.seeedstudio.com/depot/Grove-BLE-p-1929.html)
+- to use a compatible BLE product such as the [Grove - BLE](http://www.seeedstudio.com/depot/Grove-BLE-p-1929.html),
+- to enable bluetooth and disable the bluetooth daemon on Intel(R) Edison,
+- to run the client on your mobile phone.
 
 First time - Enabling BLE
 -------------------------
