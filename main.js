@@ -18,8 +18,16 @@ Article: https://software.intel.com/en-us/html5/articles/iot-local-temperature-n
 var TemperatureSensor = require('./TemperatureSensor');
 var SocketServer = require('./SocketServer');
 
-var tempSensor = new TemperatureSensor().start();
+var tempSensor = new TemperatureSensor().start(500);
 var socketServer = new SocketServer().start(tempSensor);
 
-var rotateColors = require('./LcdDisplay');
-rotateColors();
+var LcdDisplay = require('./LcdDisplay');
+var display = new LcdDisplay();
+
+tempSensor.on('temp', function(celcius){
+  console.log('Celsius Temperature:', celcius); 
+  var normTemp = Math.min(255, Math.max(0, celcius - 20) * 3);
+  display.setColor(parseInt(normTemp), parseInt(255 - normTemp), 0);
+  display.setCursor(0, 0);
+  display.write('celsius=' + celcius + ' ');
+});
