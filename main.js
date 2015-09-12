@@ -17,16 +17,13 @@ Article: https://software.intel.com/en-us/html5/articles/iot-local-temperature-n
 
 var TemperatureSensor = require('./TemperatureSensor');
 var SocketServer = require('./SocketServer');
+var LcdDisplay = require('./LcdDisplay');
+var BluetoothPeripheral = require('./BluetoothPeripheral');
+var pushToPhone = require('./Push.js');
 
 var tempSensor = new TemperatureSensor().start(500);
 var socketServer = new SocketServer().start(tempSensor);
-
-var LcdDisplay = require('./LcdDisplay');
 var display = new LcdDisplay();
-
-var BluetoothPeripheral = require('./BluetoothPeripheral');
-
-var pushToPhone = require('./Push.js');
 
 var CONSUMPTION_TEMPERATURE = 0; // 30
 
