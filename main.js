@@ -28,7 +28,7 @@ var BluetoothPeripheral = require('./BluetoothPeripheral');
 
 var pushToPhone = require('./Push.js');
 
-var CONSUMPTION_TEMPERATURE = 30;
+var CONSUMPTION_TEMPERATURE = 0; // 30
 
 console.log("Ideal tea temperature:", CONSUMPTION_TEMPERATURE);
 
@@ -41,13 +41,13 @@ function onTemperature(celsius){
   var normTemp = Math.min(255, Math.max(0, celsius - 20) * 3);
   display.setColor(parseInt(normTemp), parseInt(255 - normTemp), 0);
   display.setCursor(0, 0);
-  display.write('tea: ' + ('' + celsius).substr(0, 5) + ' °C ');
+  display.write('tea: ' + ('' + celsius).substr(0, 4) + 'degrees');
 
   if (celsius <= CONSUMPTION_TEMPERATURE) {
     tempSensor.removeListener('temp', onTemperature);
     display.setColor(0, 0, 255);
     display.setCursor(0, 0);
-    display.write('ready to drink!');
+    display.write('ready to drink! ');
     pushToPhone('your tea is ready to drink!');
   }
 }

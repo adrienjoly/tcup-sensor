@@ -1,3 +1,5 @@
+'use strict';
+
 var path = require('path');
 var http = require('http');
 var express = require('express');
@@ -13,24 +15,23 @@ SocketServer.prototype.start = function(tempSensor, port){
   // Setup HTTP server
   var app = express();
   app.use(express.static(path.join(__dirname, 'www'), { maxAge: 31557600000 }));
-  app.listen(port || DEFAULT_PORT);
   
   // Create Socket.io server
-  var server = require('http').Server(app);
-  var io = socketio(server);
+  var server = require('http').createServer(app);
+  var io = socketio(/*server*/).listen(server);
+  server.listen(port || DEFAULT_PORT);
   console.log("Serving HTTP on port", port || DEFAULT_PORT);
 
   // Attach a 'connection' event handler to the server
   io.on('connection', function (socket) {
-    'use strict';
-    console.log('a user connected');
+    console.log('Socket.io user connected');
     socket.emit('connected', 'Welcome');
 
-    var sendToSocket = socket.emit.bind(socket, 'message');
+    var sendToSocket = socket.emit.bind(socket, 'celsius');
     tempSensor.on('temp', sendToSocket);
 
     socket.on('disconnect', function () {
-        console.log('user disconnected');
+        console.log('Socket.io user disconnected');
         tempSensor.removeListener("temp", sendToSocket);
     });
   });
