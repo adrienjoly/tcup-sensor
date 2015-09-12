@@ -22,8 +22,20 @@ var BluetoothPeripheral = require('./BluetoothPeripheral');
 var pushToPhone = require('./Push.js');
 
 var tempSensor = new TemperatureSensor().start(500);
-var socketServer = new SocketServer().start(tempSensor);
+var socketServer = new SocketServer().start();
 var display = new LcdDisplay();
+
+socketServer.on('connection', function (socket) {
+  console.log('Socket.io user connected');
+  
+  var sendToSocket = socket.emit.bind(socket, 'celsius');
+  tempSensor.on('temp', sendToSocket);
+
+  socket.on('disconnect', function () {
+    console.log('Socket.io user disconnected');
+    tempSensor.removeListener("temp", sendToSocket);
+  });
+});
 
 var CONSUMPTION_TEMPERATURE = 0; // 30
 
