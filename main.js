@@ -26,8 +26,13 @@ var display = new LcdDisplay();
 
 var BluetoothPeripheral = require('./BluetoothPeripheral');
 
+var iter = 0;
+
 tempSensor.on('temp', function(celcius){
-  console.log('Celsius Temperature:', celcius); 
+  if (!iter) {
+    console.log('Celsius Temperature:', celcius); 
+  }
+  iter = (iter + 1) % 5;
   var normTemp = Math.min(255, Math.max(0, celcius - 20) * 3);
   display.setColor(parseInt(normTemp), parseInt(255 - normTemp), 0);
   display.setCursor(0, 0);
