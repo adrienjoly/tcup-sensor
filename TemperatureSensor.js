@@ -16,16 +16,15 @@ util.inherits(TemperatureSensor, EventEmitter);
 TemperatureSensor.prototype.probe = function () {
   var a = myAnalogPin.read();
   var resistance = (1023 - a) * 10000 / a;
-  var celsius_temperature = 1 / (Math.log(resistance / 10000) / B + 1 / 298.15) - 273.15;
-  console.log('Celsius Temperature:', celsius_temperature); 
-  var fahrenheit_temperature = (celsius_temperature * (9 / 5)) + 32;
-  this.emit('temp', fahrenheit_temperature);
+  var celsius = 1 / (Math.log(resistance / 10000) / B + 1 / 298.15) - 273.15;
+  //var fahrenheit = (celsius_temperature * (9 / 5)) + 32;
+  this.emit('temp', celsius);
   return this;
 }
 
-TemperatureSensor.prototype.start = function(){
+TemperatureSensor.prototype.start = function(intervalMs){
   this.stop();
-  this.interval = setInterval(this.probe.bind(this), 1000);
+  this.interval = setInterval(this.probe.bind(this), intervalMs || 1000);
   return this;
 }
 
