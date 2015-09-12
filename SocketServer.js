@@ -1,4 +1,6 @@
+var path = require('path');
 var http = require('http');
+var express = require('express');
 var socketio = require('socket.io');
 
 var DEFAULT_PORT = 1337;
@@ -8,16 +10,15 @@ function SocketServer(){
 }
 
 SocketServer.prototype.start = function(tempSensor, port){
-  // Create Socket.io server
-  var app = http
-    .createServer(function (req, res) {
-      'use strict';
-      res.writeHead(200, {'Content-Type': 'text/plain'});
-      res.end('<h1>Hello world from Intel IoT platform!</h1>');
-    })
-    .listen(port || DEFAULT_PORT);
+  // Setup HTTP server
+  var app = express();
+  app.use(express.static(path.join(__dirname, 'www'), { maxAge: 31557600000 }));
+  app.listen(port || DEFAULT_PORT);
   
-  var io = socketio(app);
+  // Create Socket.io server
+  var server = require('http').Server(app);
+  var io = socketio(server);
+  console.log("Serving HTTP on port", port || DEFAULT_PORT);
 
   // Attach a 'connection' event handler to the server
   io.on('connection', function (socket) {
