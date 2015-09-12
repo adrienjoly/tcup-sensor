@@ -12,6 +12,7 @@
       "bleno": "latest",
       "bluetooth-hci-socket": "latest",
       "socket.io":"latest",
-      "apn":"latest"
+      "apn":"latest",
+      "express":"latest"
   }
 }
