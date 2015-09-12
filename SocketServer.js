@@ -7,9 +7,7 @@ var socketio = require('socket.io');
 
 var DEFAULT_PORT = 1337;
 
-function SocketServer(){
-  this.io = null;
-}
+function SocketServer(){}
 
 SocketServer.prototype.start = function(port){
   // Setup HTTP server
@@ -18,24 +16,10 @@ SocketServer.prototype.start = function(port){
   
   // Create Socket.io server
   var server = require('http').createServer(app);
-  this.io = socketio(/*server*/).listen(server);
+  var io = socketio().listen(server);
   server.listen(port || DEFAULT_PORT);
   console.log("Serving HTTP on port", port || DEFAULT_PORT);
-  return this;
-}
-
-/*
-...then you can attach socket event handlers, by calling socketServer.on('connection', function(socket){
-  socket.on('message', ...)
-});
-*/
-
-SocketServer.prototype.on = function(evtName, handler){
-  this.io.on(evtName, handler);
-}
-
-SocketServer.prototype.removeListener = function(evtName, handler){
-  this.io.removeListener(evtName, handler);
+  return io;
 }
 
 module.exports = SocketServer;
