@@ -26,14 +26,15 @@ getSocket(function(socket){
 
   function updateBoil(celsius){
     $('#gauge > span').text(celsius);
-    socket.emit('setBoil', celsius);
   }
 
   // parse and set url parameters
   var vars = getVars();
-  var boilingTarget = vars.shift() || 80;
-  var infuseTime = vars.shift() || 20;
+  var boilingTarget = vars.shift() || 60;
+  var infuseTime = vars.shift() || 10;
 
+  socket.emit('setBoil', boilingTarget);
+  
   simulateBoil(boilingTarget, updateBoil, function(){
     window.location.href = '/2-infuse.html#' + infuseTime;
   });

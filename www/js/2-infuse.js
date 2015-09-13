@@ -25,12 +25,13 @@ getSocket(function(socket){
 
   function updateTime(seconds){
     $('#gauge > span').text(seconds);
-    //socket.emit('setBoil', celsius);
   }
 
   // parse and set url parameters
   var infuseTime = getVar() || 20;
 
+  socket.emit('infuse', infuseTime);
+  
   simulateInfuse(infuseTime, updateTime, function(){
     window.location.href = '/3-select-temp.html';
   });

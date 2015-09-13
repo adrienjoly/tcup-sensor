@@ -4,8 +4,9 @@
 /*global window, document, $, io, navigator, setTimeout */
 
 getSocket(function(socket){
+  if (socket)
+    socket.emit('infuse', 0);
   $('#submit').click(function(){
-    if (!socket) return;
     var temp = $('#temp').val();
     socket.emit('setMaxCelsius', temp);
     window.location.href = '/4-cooling.html#' + temp;

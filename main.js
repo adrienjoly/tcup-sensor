@@ -15,71 +15,23 @@ Using a ssh client:
 Article: https://software.intel.com/en-us/html5/articles/iot-local-temperature-nodejs-and-html5-samples
 */
 
-var TemperatureSensor = require('./TemperatureSensor');
 var SocketServer = require('./SocketServer');
-var LcdDisplay = require('./LcdDisplay');
-var BluetoothPeripheral = require('./BluetoothPeripheral');
-var pushToPhone = require('./Push.js');
+var StepRunner = require('./StepRunner.js');
+//var BluetoothPeripheral = require('./BluetoothPeripheral');
 
-var tempSensor = new TemperatureSensor().start(500);
 var socketServer = new SocketServer().start();
-var display = new LcdDisplay();
+var stepRunner = new StepRunner();
 
 socketServer.on('connection', function (socket) {
   console.log('Socket.io user connected');
-  
-  var sendToSocket = socket.emit.bind(socket, 'celsius');
-  tempSensor.on('temp', sendToSocket);
-
+  stepRunner.setSocket(socket); // also releases the current step's task
+  socket.emit('connected', 'Welcome');
+ 
   socket.on('disconnect', function () {
     console.log('Socket.io user disconnected');
-    tempSensor.removeListener("temp", sendToSocket);
+    stepRunner.release();
   });
 });
 
-var CONSUMPTION_TEMPERATURE = 0; // 30
-
-console.log("Ideal tea temperature:", CONSUMPTION_TEMPERATURE);
-
-// Attach a 'connection' event handler to the server
-socketServer.on('connection', function (socket) {
-  console.log('Socket.io user connected');
-  socket.emit('connected', 'Welcome');
-
-  var sendToSocket = socket.emit.bind(socket, 'celsius');
-  tempSensor.on('temp', sendToSocket);
-
-  socket.on('setMaxCelsius', function(max){
-    console.log('maxCelsius <-', max);
-    CONSUMPTION_TEMPERATURE = parseInt(max);
-  })
-
-  socket.on('disconnect', function () {
-      console.log('Socket.io user disconnected');
-      tempSensor.removeListener("temp", sendToSocket);
-  });
-});
-
-var iter = 0;
-function onTemperature(celsius){
-  if (!iter) {
-    console.log('Celsius Temperature:', celsius); 
-  }
-  iter = (iter + 1) % 5;
-  var normTemp = Math.min(255, Math.max(0, celsius - 20) * 3);
-  display.setColor(parseInt(normTemp), parseInt(255 - normTemp), 0);
-  display.setCursor(0, 0);
-  display.write('tea: ' + ('' + celsius).substr(0, 4) + 'degrees');
-
-  if (celsius <= CONSUMPTION_TEMPERATURE) {
-    tempSensor.removeListener('temp', onTemperature);
-    display.setColor(0, 0, 255);
-    display.setCursor(0, 0);
-    display.write('ready to drink! ');
-    pushToPhone('your tea is ready to drink!');
-  }
-}
-
-setTimeout(function(){
-  tempSensor.on('temp', onTemperature);
-}, 1000);
+stepRunner.run(0);  
+ 
