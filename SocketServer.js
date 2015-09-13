@@ -12,7 +12,13 @@ function SocketServer(){}
 SocketServer.prototype.start = function(port){
   // Setup HTTP server
   var app = express();
-  app.use(express.static(path.join(__dirname, 'www'), { maxAge: 31557600000 }));
+  app.use(express.static(path.join(__dirname, 'www'), { maxAge: 1 })); // 31557600000
+
+  // prevent caching
+  app.use(function(req, res, next) {
+    req.headers['if-none-match'] = 'no-match-for-this';
+    next();    
+  });
   
   // Create Socket.io server
   var server = require('http').createServer(app);
