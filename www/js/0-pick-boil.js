@@ -4,8 +4,9 @@
 /*global window, document, $, io, navigator, setTimeout */
 
 getSocket(function(socket){
+  if (socket)
+    socket.emit('selection');
   $('#submit').click(function(){
-    if (!socket) return;
     // connecting to socket turns on the display
     var boiltemp = $('#boiltemp').val();
     var infusetime = $('#infusetime').val();
