@@ -3,6 +3,8 @@ TCup Sensor
 
 TCup helps you improve the quality of your tea consumption, by adapting the infusion process accordingly to the type of tea, and by notifying you when your cup of tea has arrived to your favorite drinking temperature.
 
+Source code of the Iphone client: [TCup-iOS](https://github.com/klefevre/TCup-iOS)
+
 TemperatureSensor reads analog data from a Grover Starter Kit Plus – IoT Intel® Edition Temperature Sensor.
 It uses bleno on Intel IoT platforms to advertise it's presence, to read and write data via it's service and corresponding characteristic for Bluetooth Low Energy (BLE) communication.
 
