@@ -95,7 +95,8 @@ StepRunner.prototype.setSocket = function setSocket(socket){
   this.release();
   var _this = this;
 
-  _this.run(1);
+  this.run(1);
+  this.socket = socket;
 
   socket.on('setBoil', function(celsius){
     _this.run(2);
