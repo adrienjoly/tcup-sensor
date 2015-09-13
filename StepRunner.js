@@ -75,16 +75,18 @@ function StepRunner(props){
 }
 
 StepRunner.prototype.release = function releaseStep(){
-  console.log('releasing step', this.currentStep);
   if (this.currentStepReleaser) {
+    console.log('releasing step', this.currentStep);
     this.currentStepReleaser();
     this.currentStepReleaser = null;
   }
-  this.run(0); // back to blank state
+  this.run(0, true); // back to blank state
 }
 
-StepRunner.prototype.run = function runStep(i){
-  this.release();
+StepRunner.prototype.run = function runStep(i, noRelease){
+  if (!noRelease) {
+    this.release();
+  }
   console.log('STEP', i);
   this.currentStep = i;
   this.currentStepReleaser = this.STEPS[i]();
