@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=0.10.0"
   },
+  "scripts": {
+    "start": "cd www && open http://localhost:8000 && python -m SimpleHTTPServer"
+  },
   "dependencies": {
       "async": "latest",
       "noble": "latest",
