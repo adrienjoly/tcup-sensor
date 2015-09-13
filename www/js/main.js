@@ -3,39 +3,31 @@
 /* jshint strict: true, -W097, unused:false, undef:true */
 /*global window, document, $, io, navigator, setTimeout */
 
-function onCelsius(celsius) {
-    $('#feedback_log').text('Last update: ' + Date().substr(0, 21));
-    $('#gauge > span').text(celsius);
-}
+function getSocket(callback){
 
-// Attempt to connect to server/Intel IoT platform
-function connect(callback){
-    try {
-        var socket = io.connect('http://' + window.location.host);
-        socket.on('connected', callback.bind(null, null));
-        return socket;
-    } catch (e) {
-        callback(e);
-    }
-}
+  var socket = null;
 
-var socket = connect(function(err, message){
-    if (err) {
-        (navigator.notification || window).alert(
-            'Server Not Available!',  // message
-            '',                       // callback
-            'Connection Error!',      // title
-            'Ok'                      // buttonName
-        );        
-    } else {
-        //Apache Cordova Notification
-        navigator.notification && navigator.notification.alert(
-            'Great Job!',         // message
-            '',                   // callback
-            'You are Connected!', // title
-            'Ok'                  // buttonName
-        );
-        socket.on('celsius', onCelsius);
-        socket.emit('setMaxCelsius', 25);
-    }
-});
+  function onSuccess(message){
+    //Apache Cordova Notification
+    navigator.notification && navigator.notification.alert(
+      'Great Job!',         // message
+      '',                   // callback
+      'You are Connected!', // title
+      'Ok'                  // buttonName
+    );
+    callback(socket);
+  }
+
+  // Attempt to connect to server/Intel IoT platform
+  try {
+    socket = io.connect('http://' + window.location.host);
+    socket.on('connected', onSuccess);
+  } catch (e) {
+    (navigator.notification || window).alert(
+      'Server Not Available!',  // message
+      '',                       // callback
+      'Connection Error!',      // title
+      'Ok'                      // buttonName
+    );        
+  }
+}

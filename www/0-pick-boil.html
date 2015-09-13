@@ -12,11 +12,17 @@
     <div id="content">
         <div id="main" title="LocalTemperature" class="panel" data-footer="none" selected="true">
             <div class="center">
-                <h1>A cup of tea?</h1>
-                <a href="/0-pick-boil.html">Select type of tea</a>
+                <h1>Select Tea</h1>
+                <p>Water Temperature:</p>
+                <input id="boiltemp" type="number" min="50" max="100" value="80"> celsius degrees
+                <p>Tea infusion time:</p>
+                <input id="infusetime" type="number" min="10" max="600" value="20"> seconds
+                <p></p>
+                <button id="submit">Infuse</button>
             </div>     
         </div>
     </div>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/0-pick-boil.js"></script>
 </body>
 </html>
