@@ -20,7 +20,7 @@ getSocket(function(socket){
   // observe temperature of tea cup
   socket.on('celsius', function onCelsius(celsius) {
     celsius = parseInt(celsius);
-    $('#feedback_log').text('Last update: ' + Date().substr(0, 21));
+    //$('#feedback_log').text('Last update: ' + Date().substr(0, 21));
     $('#gauge > span').text(celsius);
     if (targetTemp && celsius <= targetTemp) {
       window.location.href = '/5-enjoy.html';

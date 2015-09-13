@@ -58,7 +58,6 @@ function StepRunner(props){
           release();
           _this.run(5);
         }
-        console.log('sending', !!_this.socket);
         if (_this.socket)
           _this.socket.emit('celsius', celsius);
       }
@@ -110,6 +109,10 @@ StepRunner.prototype.setSocket = function setSocket(socket){
     console.log('maxCelsius <-', max);
     CONSUMPTION_TEMPERATURE = parseInt(max);
     _this.run(4);
+  });
+
+  socket.on('enjoy', function(){
+    _this.run(5);
   });
 }
 
