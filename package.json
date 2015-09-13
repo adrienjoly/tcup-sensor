@@ -10,10 +10,6 @@
     "start": "cd www && open http://localhost:8000 && python -m SimpleHTTPServer"
   },
   "dependencies": {
-      "async": "latest",
-      "noble": "latest",
-      "bleno": "latest",
-      "bluetooth-hci-socket": "latest",
       "socket.io":"latest",
       "apn":"latest",
       "express":"latest"
