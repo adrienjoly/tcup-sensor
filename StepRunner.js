@@ -1,6 +1,6 @@
 var TemperatureSensor = require('./TemperatureSensor');
 var LcdDisplay = require('./LcdDisplay');
-var pushToPhone = require('./Push.js');
+//var pushToPhone = require('./Push.js');
 
 var tempSensor = new TemperatureSensor().start(500);
 var display = new LcdDisplay();
@@ -67,9 +67,7 @@ function StepRunner(props){
     5: function run(){
       display.setColor(0, 0, 255);
       display.writeLines(['Enjoy your tea!', ':-)']);
-      try {
-        pushToPhone('your tea is ready to drink!');
-      } catch(e) {};
+      //try { pushToPhone('your tea is ready to drink!'); } catch(e) {};
     }
   };
 }

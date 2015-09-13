@@ -29,7 +29,7 @@ socketServer.on('connection', function (socket) {
  
   socket.on('disconnect', function () {
     console.log('Socket.io user disconnected');
-    stepRunner.release();
+    //stepRunner.release();
   });
 });
 
