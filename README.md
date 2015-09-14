@@ -5,11 +5,20 @@ TCup helps you improve the quality of your tea consumption, by adapting the infu
 
 Source code of the Iphone client: [TCup-iOS](https://github.com/klefevre/TCup-iOS)
 
-Instruction on how to make the box: [TCup instructables page](http://www.instructables.com/id/Intel-IoT-Roadshow-Paris-tCup/)
+Alternativement, this server also serves a web client to control the sensor. Just open [http://edison.local:1337](http://edison.local:1337) in your web browser as the server is running on your Intel Edison device.
 
 ![tcup diy iot hardware project instructables tea](http://cdn.instructables.com/F4G/QF8M/IEIDCSTR/F4GQF8MIEIDCSTR.MEDIUM.jpg)
 
 TemperatureSensor reads analog data from a Grover Starter Kit Plus – IoT Intel® Edition Temperature Sensor.
+
+Usage instructions
+------------------
+
+- Assemble the hardware, by following the instructions on the [TCup instructables page](http://www.instructables.com/id/Intel-IoT-Roadshow-Paris-tCup/)
+- Push this project to your Intel Edison board
+- Install the dependencies: `npm install`
+- Run the server on the board: `node main.js`
+- Open [http://edison.local:1337](http://edison.local:1337) in your web browser for testing.
 
 Contributors
 ------------
