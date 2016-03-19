@@ -5,5 +5,317 @@
     "projectFiles": {},
     "projectDirectories": {},
     "initialAutoPluginCount": 0
+  },
+  "iot-tab": {
+    "fileStatus": {
+      ".gitignore": {
+        "previousModTime": 1442087247000,
+        "modified": 1442087247000,
+        "seen": true,
+        "name": ".gitignore"
+      },
+      "BluetoothCharacteristic.js": {
+        "previousModTime": 1442080859000,
+        "modified": 1442080859000,
+        "seen": true,
+        "name": "BluetoothCharacteristic.js"
+      },
+      "BluetoothPeripheral.js": {
+        "previousModTime": 1442076905000,
+        "modified": 1442076905000,
+        "seen": true,
+        "name": "BluetoothPeripheral.js"
+      },
+      "LICENSE": {
+        "previousModTime": 1442069688000,
+        "modified": 1442069688000,
+        "seen": true,
+        "name": "LICENSE"
+      },
+      "LcdDisplay.js": {
+        "previousModTime": 1442138464000,
+        "modified": 1442138464000,
+        "seen": true,
+        "name": "LcdDisplay.js"
+      },
+      "Push.js": {
+        "previousModTime": 1442087345000,
+        "modified": 1442087345000,
+        "seen": true,
+        "name": "Push.js"
+      },
+      "README.md": {
+        "previousModTime": 1458396030000,
+        "modified": 1458396030000,
+        "seen": true,
+        "name": "README.md"
+      },
+      "SocketServer.js": {
+        "previousModTime": 1442138418000,
+        "modified": 1442138418000,
+        "seen": true,
+        "name": "SocketServer.js"
+      },
+      "StepRunner.js": {
+        "previousModTime": 1442144879000,
+        "modified": 1442144879000,
+        "seen": true,
+        "name": "StepRunner.js"
+      },
+      "TemperatureSensor.js": {
+        "previousModTime": 1442076065000,
+        "modified": 1442076065000,
+        "seen": true,
+        "name": "TemperatureSensor.js"
+      },
+      "cert.pem": {
+        "previousModTime": 1442083642000,
+        "modified": 1442083642000,
+        "seen": true,
+        "name": "cert.pem"
+      },
+      "icon.png": {
+        "previousModTime": 1442067981000,
+        "modified": 1442067981000,
+        "seen": true,
+        "name": "icon.png"
+      },
+      "key.pem": {
+        "previousModTime": 1442084032000,
+        "modified": 1442084032000,
+        "seen": true,
+        "name": "key.pem"
+      },
+      "main.js": {
+        "previousModTime": 1442144599000,
+        "modified": 1442144599000,
+        "seen": true,
+        "name": "main.js"
+      },
+      "package.json": {
+        "previousModTime": 1442136009000,
+        "modified": 1442136009000,
+        "seen": true,
+        "name": "package.json"
+      },
+      "push.sh": {
+        "previousModTime": 1458396127000,
+        "modified": 1458396127000,
+        "seen": true,
+        "name": "push.sh"
+      },
+      "tcup-sensor.xdk": {
+        "previousModTime": 1458395875000,
+        "modified": 1458395875000,
+        "seen": true,
+        "name": "tcup-sensor.xdk"
+      },
+      "tcup-sensor.xdke": {
+        "previousModTime": 1458395875000,
+        "modified": 1458395875000,
+        "seen": true,
+        "name": "tcup-sensor.xdke"
+      },
+      "www/0-pick-boil.html": {
+        "previousModTime": 1442138899000,
+        "modified": 1442138899000,
+        "seen": true,
+        "name": "www/0-pick-boil.html"
+      },
+      "www/1-boiling.html": {
+        "previousModTime": 1442107424000,
+        "modified": 1442107424000,
+        "seen": true,
+        "name": "www/1-boiling.html"
+      },
+      "www/2-infuse.html": {
+        "previousModTime": 1442133024000,
+        "modified": 1442133024000,
+        "seen": true,
+        "name": "www/2-infuse.html"
+      },
+      "www/3-select-temp.html": {
+        "previousModTime": 1442133445000,
+        "modified": 1442133445000,
+        "seen": true,
+        "name": "www/3-select-temp.html"
+      },
+      "www/4-cooling.html": {
+        "previousModTime": 1442106063000,
+        "modified": 1442106063000,
+        "seen": true,
+        "name": "www/4-cooling.html"
+      },
+      "www/5-enjoy.html": {
+        "previousModTime": 1442139892000,
+        "modified": 1442139892000,
+        "seen": true,
+        "name": "www/5-enjoy.html"
+      },
+      "www/index.html": {
+        "previousModTime": 1442108443000,
+        "modified": 1442108443000,
+        "seen": true,
+        "name": "www/index.html"
+      },
+      "www/css/main.css": {
+        "previousModTime": 1442092377000,
+        "modified": 1442092377000,
+        "seen": true,
+        "name": "www/css/main.css"
+      },
+      "www/js/0-pick-boil.js": {
+        "previousModTime": 1442141468000,
+        "modified": 1442141468000,
+        "seen": true,
+        "name": "www/js/0-pick-boil.js"
+      },
+      "www/js/1-boiling.js": {
+        "previousModTime": 1442138982000,
+        "modified": 1442138982000,
+        "seen": true,
+        "name": "www/js/1-boiling.js"
+      },
+      "www/js/2-infuse.js": {
+        "previousModTime": 1442139008000,
+        "modified": 1442139008000,
+        "seen": true,
+        "name": "www/js/2-infuse.js"
+      },
+      "www/js/3-select-temp.js": {
+        "previousModTime": 1442139247000,
+        "modified": 1442139247000,
+        "seen": true,
+        "name": "www/js/3-select-temp.js"
+      },
+      "www/js/4-cooling.js": {
+        "previousModTime": 1442139938000,
+        "modified": 1442139938000,
+        "seen": true,
+        "name": "www/js/4-cooling.js"
+      },
+      "www/js/5-enjoy.js": {
+        "previousModTime": 1442139883000,
+        "modified": 1442139883000,
+        "seen": true,
+        "name": "www/js/5-enjoy.js"
+      },
+      "www/js/main.js": {
+        "previousModTime": 1442108394000,
+        "modified": 1442108394000,
+        "seen": true,
+        "name": "www/js/main.js"
+      },
+      "www/lib/jquery/jquery-2.1.1.js": {
+        "previousModTime": 1442068366000,
+        "modified": 1442068366000,
+        "seen": true,
+        "name": "www/lib/jquery/jquery-2.1.1.js"
+      },
+      "xdk/project-info.json": {
+        "previousModTime": 1458395875000,
+        "modified": 1458395875000,
+        "seen": true,
+        "name": "xdk/project-info.json"
+      }
+    },
+    "boardFileStatus": {
+      "BluetoothCharacteristic.js": {
+        "previousModTime": 1458396338030
+      },
+      "BluetoothPeripheral.js": {
+        "previousModTime": 1458396338030
+      },
+      "LICENSE": {
+        "previousModTime": 1458396338030
+      },
+      "LcdDisplay.js": {
+        "previousModTime": 1458396338030
+      },
+      "Push.js": {
+        "previousModTime": 1458396338030
+      },
+      "README.md": {
+        "previousModTime": 1458396338030
+      },
+      "SocketServer.js": {
+        "previousModTime": 1458396338030
+      },
+      "StepRunner.js": {
+        "previousModTime": 1458396338030
+      },
+      "TemperatureSensor.js": {
+        "previousModTime": 1458396338030
+      },
+      "cert.pem": {
+        "previousModTime": 1458396338030
+      },
+      "icon.png": {
+        "previousModTime": 1458396338030
+      },
+      "key.pem": {
+        "previousModTime": 1458396338030
+      },
+      "main.js": {
+        "previousModTime": 1458396338030
+      },
+      "package.json": {
+        "previousModTime": 1458396338030
+      },
+      "push.sh": {
+        "previousModTime": 1458396338030
+      },
+      "www/0-pick-boil.html": {
+        "previousModTime": 1458396338030
+      },
+      "www/1-boiling.html": {
+        "previousModTime": 1458396338030
+      },
+      "www/2-infuse.html": {
+        "previousModTime": 1458396338030
+      },
+      "www/3-select-temp.html": {
+        "previousModTime": 1458396338030
+      },
+      "www/4-cooling.html": {
+        "previousModTime": 1458396338030
+      },
+      "www/5-enjoy.html": {
+        "previousModTime": 1458396338030
+      },
+      "www/index.html": {
+        "previousModTime": 1458396338030
+      },
+      "www/css/main.css": {
+        "previousModTime": 1458396338030
+      },
+      "www/js/0-pick-boil.js": {
+        "previousModTime": 1458396338030
+      },
+      "www/js/1-boiling.js": {
+        "previousModTime": 1458396338030
+      },
+      "www/js/2-infuse.js": {
+        "previousModTime": 1458396338030
+      },
+      "www/js/3-select-temp.js": {
+        "previousModTime": 1458396338030
+      },
+      "www/js/4-cooling.js": {
+        "previousModTime": 1458396338030
+      },
+      "www/js/5-enjoy.js": {
+        "previousModTime": 1458396338030
+      },
+      "www/js/main.js": {
+        "previousModTime": 1458396338030
+      },
+      "www/lib/jquery/jquery-2.1.1.js": {
+        "previousModTime": 1458396338030
+      },
+      "xdk/project-info.json": {
+        "previousModTime": 1458396338030
+      }
+    }
   }
 }
